@@ -8,22 +8,32 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
+using SchoolFinances.Contracts;
 using SchoolFinances.Domain;
 
 namespace SchoolFinances.Controllers
 {
-	//[Route("api/[controller]")]
-	//[ApiController]
+	[Route("api/[controller]")]
+	[ApiController]
 	public class AccountController : ControllerBase
 	{
-		private List<User> people = new List<User>
-		{
-			new User { Id = 1, Login="admin@gmail.com", Password="12345", Role = "admin", FirstName = "Homer", LastName = "Simpson" },
-			new User { Id = 2, Login="qwerty", Password="55555", Role = "user", FirstName = "Bart", LastName = "Simpson" }
-		};
+		private readonly IUsersRepository<User> _usersRepository;
 
-		[HttpPost("/token")]
-		public async Task Token()
+		public AccountController(IUsersRepository<User> usersRepository)
+		{
+			_usersRepository = usersRepository;
+		}
+
+		[HttpPost]
+		[Route("register")]
+		public async Task Register([FromBody] string value)
+		{
+			User user = JsonConvert.DeserializeObject(value) as User;
+		}
+
+		[HttpPost]
+		[Route("login")]
+		public async Task Login()
 		{
 			var username = Request.Form["username"];
 			var password = Request.Form["password"];
@@ -53,19 +63,22 @@ namespace SchoolFinances.Controllers
 				username = identity.Name
 			};
 
-			// сериализация ответа
+			// serialize response
 			Response.ContentType = "application/json";
-			await Response.WriteAsync(JsonConvert.SerializeObject(response, new JsonSerializerSettings { Formatting = Formatting.Indented }));
+			await Response.WriteAsync(JsonConvert.SerializeObject(response, new JsonSerializerSettings
+			{
+				Formatting = Formatting.Indented
+			}));
 		}
 
 		private ClaimsIdentity GetIdentity(string username, string password)
 		{
-			User person = people.FirstOrDefault(x => x.Login == username && x.Password == password);
-			if (person != null)
+			User person = _usersRepository.GetUser(username);
+			if (person != null && person.Password == password)
 			{
 				var claims = new List<Claim>
 				{
-					new Claim(ClaimsIdentity.DefaultNameClaimType, person.Login),
+					new Claim(ClaimsIdentity.DefaultNameClaimType, person.Username),
 					new Claim(ClaimsIdentity.DefaultRoleClaimType, person.Role)
 				};
 				ClaimsIdentity claimsIdentity =

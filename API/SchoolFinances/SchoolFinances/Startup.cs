@@ -46,6 +46,7 @@ namespace SchoolFinances
 			services.AddDbContext<ApplicationContext>(op => op.UseSqlServer(Configuration["ConnectionString:SchoolFinancesDB"], b => b.MigrationsAssembly("SchoolFinances")));
 
 			services.AddScoped<IUsersRepository<User>, UsersRepository>();
+			services.AddScoped<IClassesRepository<SClass>, ClassesRepository>();
 
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 		}

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -15,7 +17,7 @@ namespace SchoolFinances.Domain
 		public string LastName { get; set; }
 
 		[Required]
-		public string Login { get; set; }
+		public string Username { get; set; }
 
 		[Required]
 		public string Password { get; set; }

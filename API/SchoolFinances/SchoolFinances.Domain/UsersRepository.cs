@@ -15,11 +15,29 @@ namespace SchoolFinances.Domain
 			_applicationContext = context;
 		}
 
+		public void CreateUser(User user)
+		{
+			throw new NotImplementedException();
+		}
+
+		public void DeleteUser(string userName)
+		{
+			throw new NotImplementedException();
+		}
 
 		public IEnumerable<User> GetAllUsers()
 		{
 			return _applicationContext.Users.ToList();
 		}
 
+		public User GetUser(string userName)
+		{
+			throw new NotImplementedException();
+		}
+
+		public void UpdateUser(User user)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }

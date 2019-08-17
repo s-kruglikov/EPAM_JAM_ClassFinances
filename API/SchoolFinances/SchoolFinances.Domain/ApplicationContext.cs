@@ -8,6 +8,8 @@ namespace SchoolFinances.Domain
 	{
 		public DbSet<User> Users { get; set; }
 
+		public DbSet<SClass> SClasses { get; set; }
+
 		public ApplicationContext()
 		{
 			Database.EnsureCreated();
