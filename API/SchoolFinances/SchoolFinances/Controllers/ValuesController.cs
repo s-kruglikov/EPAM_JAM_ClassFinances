@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using SchoolFinances.Contracts;
+using SchoolFinances.Domain;
 
 namespace SchoolFinances.Controllers
 {
@@ -11,8 +13,23 @@ namespace SchoolFinances.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        // GET api/values
-        [HttpGet]
+		private readonly IUsersRepository<User> _usersRepository;
+
+		public ValuesController(IUsersRepository<User> usersRepository)
+		{
+			_usersRepository = usersRepository;
+		}
+
+		[HttpGet]
+		[Route("GetAllUsers")]
+		public IActionResult GetAllUsers()
+		{
+			IEnumerable<User> users = _usersRepository.GetAllUsers();
+			return Ok(users);
+		}
+
+		// GET api/values
+		[HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
             return new string[] { "value1", "value2" };

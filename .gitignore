@@ -4,3 +4,6 @@ API/SchoolFinances/SchoolFinances.DataAccess/obj/
 API/SchoolFinances/SchoolFinances.Domain/obj/
 API/SchoolFinances/SchoolFinances/bin/
 API/SchoolFinances/SchoolFinances.Domain/bin/
+API/SchoolFinances/SchoolFinances.Contracts/bin/
+API/SchoolFinances/SchoolFinances.Contracts/obj/
+API/SchoolFinances/SchoolFinances.Tests/obj/
