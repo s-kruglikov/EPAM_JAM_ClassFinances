@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.29209.62
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolFinances", "SchoolFinances\SchoolFinances.csproj", "{8EBC4905-EFF8-4629-9667-181610846BD7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolFinances.Domain", "SchoolFinances.Domain\SchoolFinances.Domain.csproj", "{FA415ACB-A5BA-4EC1-9615-D5A0E900313F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolFinances.DataAccess", "SchoolFinances.DataAccess\SchoolFinances.DataAccess.csproj", "{431CB479-5D64-4E6D-9A8C-9D6C770A16A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{8EBC4905-EFF8-4629-9667-181610846BD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8EBC4905-EFF8-4629-9667-181610846BD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8EBC4905-EFF8-4629-9667-181610846BD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA415ACB-A5BA-4EC1-9615-D5A0E900313F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA415ACB-A5BA-4EC1-9615-D5A0E900313F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA415ACB-A5BA-4EC1-9615-D5A0E900313F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA415ACB-A5BA-4EC1-9615-D5A0E900313F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{431CB479-5D64-4E6D-9A8C-9D6C770A16A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{431CB479-5D64-4E6D-9A8C-9D6C770A16A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{431CB479-5D64-4E6D-9A8C-9D6C770A16A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{431CB479-5D64-4E6D-9A8C-9D6C770A16A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
