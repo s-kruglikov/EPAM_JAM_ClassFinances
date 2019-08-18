@@ -6,8 +6,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using SchoolFinances.Contracts;
-using SchoolFinances.Domain;
+using SchoolFinances.Abstract;
+using SchoolFinances.Models;
+using SchoolFinances.Repositories;
 
 namespace SchoolFinances
 {
@@ -45,8 +46,8 @@ namespace SchoolFinances
 
 			services.AddDbContext<ApplicationContext>(op => op.UseSqlServer(Configuration["ConnectionString:SchoolFinancesDB"], b => b.MigrationsAssembly("SchoolFinances")));
 
-			services.AddScoped<IUsersRepository<User>, UsersRepository>();
-			services.AddScoped<IClassesRepository<SClass>, ClassesRepository>();
+			services.AddScoped<IUserRepository<User>, DbUserRepository>();
+			//services.AddScoped<IUserRepository<User>, MockUserRepository>();
 
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 		}
