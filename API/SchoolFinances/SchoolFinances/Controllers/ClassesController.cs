@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using SchoolFinances.Abstract;
 
 using SchoolFinances.Models;
@@ -23,32 +19,26 @@ namespace SchoolFinances.Controllers
 			_classeRepository = classeRepository;
 		}
 
-		//		// POST api/values
-		//		[Authorize]
-		//		[HttpPost]
-		//		public void Post(SClass value)
-		//		{
-		//			var username = User.Identity.Name;
+		// POST api/classes/create
+		[Authorize]
+		[HttpPost]
+		[Route("create")]
+		public int Create([FromBody] JObject value)
+		{
+			return _classeRepository.CreateClass(
+				value["description"].ToString(),
+				value["userId"].ToObject<int>()
+			);
+		}
 
-		//			if(string.IsNullOrEmpty(username))
-		//			{
-		//				username = value.Username;
-		//			}
+		// GET api/classes
+		[Authorize]
+		[HttpGet]
+		public IActionResult Get(int userId)
+		{
+			IEnumerable<Classe> classes = _classeRepository.GetClasses(userId);
 
-		//			_sClassesRepository.CreateClass(
-		//				new SClass {
-		//					Username = username,
-		//					Description = value.Description
-		//				});
-		//		}
-
-		//		[Authorize]
-		//		[HttpGet]
-		//		public IActionResult Get(string userName)
-		//		{
-		//			IEnumerable<SClass> sClasses = _sClassesRepository.GetClasses(userName);
-
-		//			return Ok(sClasses);
-		//		}
+			return Ok(classes);
+		}
 	}
 }
