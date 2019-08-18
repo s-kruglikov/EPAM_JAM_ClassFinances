@@ -64,6 +64,7 @@
     <Build Include="L_Kid_To_Class.sql" />
     <Build Include="L_User_To_Class.sql" />
     <Build Include="L_User_To_Kid.sql" />
+    <Build Include="Donates.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script.PostDeployment.sql" />

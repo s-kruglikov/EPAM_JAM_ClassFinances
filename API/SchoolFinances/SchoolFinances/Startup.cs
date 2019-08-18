@@ -49,6 +49,9 @@ namespace SchoolFinances
 			services.AddScoped<IUserRepository<User>, DbUserRepository>();
 			//services.AddScoped<IUserRepository<User>, MockUserRepository>();
 
+			services.AddScoped<IKidRepository<Kid>, DbKidRepository>();
+			services.AddScoped<IClassRepository<Classe>, DbClassRepository>();
+
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 		}
 

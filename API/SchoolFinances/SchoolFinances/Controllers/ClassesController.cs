@@ -1,53 +1,54 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Threading.Tasks;
-//using Microsoft.AspNetCore.Authorization;
-//using Microsoft.AspNetCore.Http;
-//using Microsoft.AspNetCore.Mvc;
-//using Newtonsoft.Json;
-//using SchoolFinances.Contracts;
-//using SchoolFinances.Domain;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using SchoolFinances.Abstract;
 
-//namespace SchoolFinances.Controllers
-//{
-//	[Route("api/[controller]")]
-//	[ApiController]
-//	public class ClassesController : ControllerBase
-//	{
-//		private readonly IClassesRepository<SClass> _sClassesRepository;
+using SchoolFinances.Models;
 
-//		public ClassesController(IClassesRepository<SClass> sClassesRepository)
-//		{
-//			_sClassesRepository = sClassesRepository;
-//		}
+namespace SchoolFinances.Controllers
+{
+	[Route("api/[controller]")]
+	[ApiController]
+	public class ClassesController : ControllerBase
+	{
+		private readonly IClassRepository<Classe> _classeRepository;
 
-//		// POST api/values
-//		[Authorize]
-//		[HttpPost]
-//		public void Post(SClass value)
-//		{
-//			var username = User.Identity.Name;
+		public ClassesController(IClassRepository<Classe> classeRepository)
+		{
+			_classeRepository = classeRepository;
+		}
 
-//			if(string.IsNullOrEmpty(username))
-//			{
-//				username = value.Username;
-//			}
+		//		// POST api/values
+		//		[Authorize]
+		//		[HttpPost]
+		//		public void Post(SClass value)
+		//		{
+		//			var username = User.Identity.Name;
 
-//			_sClassesRepository.CreateClass(
-//				new SClass {
-//					Username = username,
-//					Description = value.Description
-//				});
-//		}
+		//			if(string.IsNullOrEmpty(username))
+		//			{
+		//				username = value.Username;
+		//			}
 
-//		[Authorize]
-//		[HttpGet]
-//		public IActionResult Get(string userName)
-//		{
-//			IEnumerable<SClass> sClasses = _sClassesRepository.GetClasses(userName);
+		//			_sClassesRepository.CreateClass(
+		//				new SClass {
+		//					Username = username,
+		//					Description = value.Description
+		//				});
+		//		}
 
-//			return Ok(sClasses);
-//		}
-//	}
-//}
+		//		[Authorize]
+		//		[HttpGet]
+		//		public IActionResult Get(string userName)
+		//		{
+		//			IEnumerable<SClass> sClasses = _sClassesRepository.GetClasses(userName);
+
+		//			return Ok(sClasses);
+		//		}
+	}
+}
