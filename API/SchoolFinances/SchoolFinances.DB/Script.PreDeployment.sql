@@ -9,7 +9,9 @@
                SELECT * FROM [$(TableName)]					
 --------------------------------------------------------------------------------------
 */
-DROP TABLE IF EXISTS dbo.l_kid_to_class;
+DROP TABLE IF EXISTS dbo.l_donate_to_class;
+
+DROP TABLE IF EXISTS dbo.l_donate_to_kid;
 
 DROP TABLE IF EXISTS dbo.l_user_to_class;
 
@@ -18,5 +20,7 @@ DROP TABLE IF EXISTS dbo.l_user_to_kid;
 DROP TABLE IF EXISTS dbo.classes;
 
 DROP TABLE IF EXISTS dbo.kids;
+
+DROP TABLE IF EXISTS dbo.donates;
 
 DROP TABLE IF EXISTS dbo.users;
